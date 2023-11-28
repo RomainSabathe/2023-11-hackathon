@@ -52,15 +52,15 @@ def custom_ddpm(
             beta_T=0.02,
             # Dataset params
             dataset_root=Path("data") / "fashion_mnist",
-            use_dataset_subset=False,
+            use_dataset_subset=True,
             # Network architecture params
             model_block_out_channels=(32, 64, 128, 128),
             # Training params
-            learning_rate=1e-3,
-            n_epochs=20,
+            learning_rate=2e-3,
+            n_epochs=1000,
             n_iter_per_epoch=None,
             skip_training=skip_training,
-            batch_size=128,
+            batch_size=4,
             # Misc params
             seed=3,
             device=device,
@@ -191,6 +191,7 @@ def custom_ddpm(
                 torch_imgs_to_pil(xts).save(
                     OUTPUT_IMAGES_PATH / f"reverse_pass_{t:04d}.jpg"
                 )
+
 
 def torch_imgs_to_pil(tensor: torch.Tensor) -> Image:
     # We assume tensor has:
